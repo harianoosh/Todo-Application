@@ -12,6 +12,7 @@
     <string name="deletebutton">DELETE</string>
     <string name="cancelbutton">CANCEL</string>
     <string name="submitbutton">SUBMIT</string>
+    <string name="notasks">No tasks available</string>
 
     <string name="dailogetitle">Select Task</string>
 

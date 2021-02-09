@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -128,15 +129,27 @@ public class MainActivity extends AppCompatActivity {
                 for (Task task : tasks) {
                     currentTasks.add(task.taskName);
                 }
+                if (!(currentTasks.size() > 0)) {
+                    currentTasks.add(getString(R.string.notasks));
+                }
                 AlertDialog.Builder dailoge = new AlertDialog.Builder(MainActivity.this);
                 dailoge.setTitle(R.string.dailogetitle).setItems(currentTasks.toArray(new String[0]), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(MainActivity.this, DisplayTask.class);
-                        intent.putExtra(DisplayTask.DISPLAY_TASK_KEY, tasks.get(which));
-                        intent.putExtra(ARRAY_INDEX_DISPLAYING, which);
-                        intent.putExtra(MainActivity.TOTAL_TASKS, tasks);
-                        startActivityForResult(intent,SUCCESS_CODE);
+                        if (currentTasks.size() >0 && currentTasks.get(0) != null && !currentTasks.get(0).equalsIgnoreCase(getString(R.string.notasks))){
+                            Intent intent = new Intent(MainActivity.this, DisplayTask.class);
+                            intent.putExtra(DisplayTask.DISPLAY_TASK_KEY, tasks.get(which));
+                            intent.putExtra(ARRAY_INDEX_DISPLAYING, which);
+                            intent.putExtra(MainActivity.TOTAL_TASKS, tasks);
+                            startActivityForResult(intent,SUCCESS_CODE);
+                        } else {
+                            Toast.makeText(MainActivity.this, getString(R.string.notasks), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).setNegativeButton(getString(R.string.cancelbutton), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
                     }
                 });
                 dailoge.create().show();

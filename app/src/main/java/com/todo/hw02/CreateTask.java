@@ -71,6 +71,7 @@ public class CreateTask extends AppCompatActivity {
                         Log.d(TAG, "onDateSet: "+currentTask.date);
                     }
                 }, today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
+                date.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 date.show();
             }
         });
