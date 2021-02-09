@@ -62,22 +62,22 @@ public class MainActivity extends AppCompatActivity {
             heading.setText(currHeading.replaceAll("\\d+", String.valueOf(tasks.size())));
 
             if (tasks != null && tasks.size() > 0) {
-                ArrayList<Task> upcomingtasks = (ArrayList<Task>) tasks.stream().filter(c-> {
+                ArrayList<Task> upcomingtasks = (ArrayList<Task>) tasks.stream().filter(c -> {
                     try {
-                        return CreateTask.dateformat.parse(c.date).compareTo(CreateTask.dateformat.parse(CreateTask.dateformat.format(new Date())))>=0;
+                        return CreateTask.dateformat.parse(c.date).compareTo(CreateTask.dateformat.parse(CreateTask.dateformat.format(new Date()))) >= 0;
                     } catch (ParseException e) {
                         return false;
                     }
                 }).collect(Collectors.toList());
 
-                if (upcomingtasks.size() > 0){
+                if (upcomingtasks.size() > 0) {
                     upcomingtasks.sort(new Comparator<Task>() {
                         @Override
                         public int compare(Task o1, Task o2) {
                             try {
                                 return CreateTask.dateformat.parse(o1.date).compareTo(CreateTask.dateformat.parse(o2.date));
                             } catch (ParseException e) {
-                                Log.d(TAG, "compare: "+e.getLocalizedMessage());
+                                Log.d(TAG, "compare: " + e.getLocalizedMessage());
                             }
                             return 0;
                         }
@@ -129,24 +129,23 @@ public class MainActivity extends AppCompatActivity {
                 for (Task task : tasks) {
                     currentTasks.add(task.taskName);
                 }
-                if (!(currentTasks.size() > 0)) {
-                    currentTasks.add(getString(R.string.notasks));
-                }
                 AlertDialog.Builder dailoge = new AlertDialog.Builder(MainActivity.this);
-                dailoge.setTitle(R.string.dailogetitle).setItems(currentTasks.toArray(new String[0]), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (currentTasks.size() >0 && currentTasks.get(0) != null && !currentTasks.get(0).equalsIgnoreCase(getString(R.string.notasks))){
+                dailoge.setTitle(R.string.dailogetitle);
+                if (currentTasks.size() > 0) {
+                    dailoge.setItems(currentTasks.toArray(new String[0]), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
                             Intent intent = new Intent(MainActivity.this, DisplayTask.class);
                             intent.putExtra(DisplayTask.DISPLAY_TASK_KEY, tasks.get(which));
                             intent.putExtra(ARRAY_INDEX_DISPLAYING, which);
                             intent.putExtra(MainActivity.TOTAL_TASKS, tasks);
-                            startActivityForResult(intent,SUCCESS_CODE);
-                        } else {
-                            Toast.makeText(MainActivity.this, getString(R.string.notasks), Toast.LENGTH_SHORT).show();
+                            startActivityForResult(intent, SUCCESS_CODE);
                         }
-                    }
-                }).setNegativeButton(getString(R.string.cancelbutton), new DialogInterface.OnClickListener() {
+                    });
+                } else {
+                    dailoge.setMessage(getString(R.string.notasks));
+                }
+                dailoge.setNegativeButton(getString(R.string.cancelbutton), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

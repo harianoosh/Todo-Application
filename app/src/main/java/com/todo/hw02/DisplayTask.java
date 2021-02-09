@@ -1,7 +1,9 @@
 package com.todo.hw02;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,13 +50,28 @@ public class DisplayTask extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<Task> updatedTasks = (ArrayList<Task>) intent.getSerializableExtra(MainActivity.TOTAL_TASKS);
-                int removeIndex = (Integer) intent.getIntExtra(MainActivity.ARRAY_INDEX_DISPLAYING, 0);
-                Task isupdated = updatedTasks.remove(removeIndex);
-                Log.d(TAG, "onClick: "+updatedTasks+ " -- "+isupdated+" -- "+(Integer) intent.getIntExtra(MainActivity.ARRAY_INDEX_DISPLAYING, 0));
-                intent.putExtra(UPDATED_TASKS, updatedTasks);
-                setResult(DELETE_CODE, intent);
-                finish();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(DisplayTask.this);
+                dialog.setTitle(getString(R.string.deletetitle));
+                dialog.setMessage(getString(R.string.deletetaskmessage));
+                dialog.setPositiveButton(getString(R.string.labelok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ArrayList<Task> updatedTasks = (ArrayList<Task>) intent.getSerializableExtra(MainActivity.TOTAL_TASKS);
+                        int removeIndex = (Integer) intent.getIntExtra(MainActivity.ARRAY_INDEX_DISPLAYING, 0);
+                        Task isupdated = updatedTasks.remove(removeIndex);
+                        Log.d(TAG, "onClick: "+updatedTasks+ " -- "+isupdated+" -- "+(Integer) intent.getIntExtra(MainActivity.ARRAY_INDEX_DISPLAYING, 0));
+                        intent.putExtra(UPDATED_TASKS, updatedTasks);
+                        setResult(DELETE_CODE, intent);
+                        finish();
+                    }
+                });
+                dialog.setNegativeButton(getString(R.string.cancelbutton), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                dialog.create().show();
             }
         });
 
