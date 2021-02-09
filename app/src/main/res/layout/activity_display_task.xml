@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DisplayTask">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/displayactivity_heading"
+        android:textSize="@dimen/headings_font"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/displaytasknamelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/namelabel"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/displaytaskdatelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/datelabel"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/displaytasknamelabel"
+        app:layout_constraintTop_toBottomOf="@+id/displaytasknamelabel" />
+
+    <TextView
+        android:id="@+id/displaytaskprioritylabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/prioritylabel"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/displaytaskdatelabel"
+        app:layout_constraintTop_toBottomOf="@+id/displaytaskdatelabel" />
+
+    <TextView
+        android:id="@+id/displayActivityNameValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/displaytasknamelabel"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/displaytasknamelabel"
+        app:layout_constraintTop_toTopOf="@+id/displaytasknamelabel" />
+
+    <TextView
+        android:id="@+id/displayActivityDateValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/displaytaskdatelabel"
+        app:layout_constraintEnd_toEndOf="@+id/displayActivityNameValue"
+        app:layout_constraintStart_toStartOf="@+id/displayActivityNameValue"
+        app:layout_constraintTop_toTopOf="@+id/displaytaskdatelabel" />
+
+    <TextView
+        android:id="@+id/displayActivityPriorityValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/displaytaskprioritylabel"
+        app:layout_constraintEnd_toEndOf="@+id/displayActivityDateValue"
+        app:layout_constraintStart_toStartOf="@+id/displayActivityDateValue"
+        app:layout_constraintTop_toTopOf="@+id/displaytaskprioritylabel" />
+
+    <Button
+        android:id="@+id/displayActivityCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="@string/cancelbutton"
+        app:layout_constraintStart_toStartOf="@+id/displaytaskprioritylabel"
+        app:layout_constraintTop_toBottomOf="@+id/displaytaskprioritylabel" />
+
+    <Button
+        android:id="@+id/displayActivityDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deletebutton"
+        app:layout_constraintBottom_toBottomOf="@+id/displayActivityCancel"
+        app:layout_constraintEnd_toEndOf="@+id/displayActivityPriorityValue"
+        app:layout_constraintTop_toTopOf="@+id/displayActivityCancel" />
+</androidx.constraintlayout.widget.ConstraintLayout>

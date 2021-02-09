@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">ToDo</string>
+<!--    &lt;!&ndash;    Titles&ndash;&gt;-->
+<!--    <string name="mainactivitytitle">To Do List</string>-->
+<!--    <string name="createtaskactivitytitle">Create Task</string>-->
+<!--    <string name="displaytaskactivitytitle">Display Task</string>-->
+
+    <!--    Global Constants-->
+    <string name="namelabel">Name: </string>
+    <string name="datelabel">Date: </string>
+    <string name="prioritylabel">Priority: </string>
+    <string name="deletebutton">DELETE</string>
+    <string name="cancelbutton">CANCEL</string>
+    <string name="submitbutton">SUBMIT</string>
+
+    <string name="dailogetitle">Select Task</string>
+
+    <string name="intentname">com.todo.hw02.intent.action.CREATETASK</string>
+
+    <!--MainActivity Constants-->
+    <string name="mainactivity_title">To Do List</string>
+    <string name="mainactivity_heading">You have 0 tasks</string>
+    <string name="mainactivity_upcomings">Upcoming Tasks</string>
+    <string name="mainactivity_tasktitle">Task Title</string>
+    <string name="mainactivity_taskdate">00/00/0000</string>
+    <string name="mainactivity_taskpriority">Normal</string>
+    <string name="mainactivity_viewtask">VIEW TASKS</string>
+    <string name="mainactivity_createtask">CREATE A TASK</string>
+
+    <!--    upcoming tasks constants-->
+    <string name="mainactivity_upcomingtaskempty">None</string>
+    <string name="mainactivity_upcomingtaskblank"></string>
+
+    <!--    DisplayActivity Constants-->
+    <string name="displayactivity_title">Display Task</string>
+    <string name="displayactivity_heading">Task Information</string>
+
+    <!--    CreateTask Activity Constants-->
+    <string name="createtaskactivity_title">Create Task</string>
+    <string name="createtaskactivity_nameplaceholder">Task Name</string>
+    <string name="createtaskactivity_setdatebutton">Set Date</string>
+    <string name="createtaskactivity_priorityhigh">High</string>
+    <string name="createtaskactivity_prioritymedium">Medium</string>
+    <string name="createtaskactivity_prioritylow">Low</string>
+    <string name="createtaskactivity_priorityslecttoast">Please select a priority</string>
+    <string name="createtaskactivity_tasknametoast">Please enter Task Name</string>
+    <string name="createtaskactivity_taskdatetoast">Please select a date</string>
+</resources>
