@@ -62,13 +62,14 @@ public class MainActivity extends AppCompatActivity {
             heading.setText(currHeading.replaceAll("\\d+", String.valueOf(tasks.size())));
 
             if (tasks != null && tasks.size() > 0) {
-                ArrayList<Task> upcomingtasks = (ArrayList<Task>) tasks.stream().filter(c -> {
-                    try {
-                        return CreateTask.dateformat.parse(c.date).compareTo(CreateTask.dateformat.parse(CreateTask.dateformat.format(new Date()))) >= 0;
-                    } catch (ParseException e) {
-                        return false;
-                    }
-                }).collect(Collectors.toList());
+//                ArrayList<Task> upcomingtasks = (ArrayList<Task>) tasks.stream().filter(c -> {
+//                    try {
+//                        return CreateTask.dateformat.parse(c.date).compareTo(CreateTask.dateformat.parse(CreateTask.dateformat.format(new Date()))) >= 0;
+//                    } catch (ParseException e) {
+//                        return false;
+//                    }
+//                }).collect(Collectors.toList());
+                ArrayList<Task> upcomingtasks = tasks;
 
                 if (upcomingtasks.size() > 0) {
                     upcomingtasks.sort(new Comparator<Task>() {
